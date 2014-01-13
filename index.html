@@ -1,15 +1,27 @@
-<html>
-<body>
-
-<div class='header'><h1>Home</h1></div>
-<div class='search-view'>
-<input class='search-key' type="text"/>
-<ul class='employee-list'></ul>
-</div>
-
-<script src="lib/jquery-1.8.2.min.js"></script>
-<script src="js/storage/memory-store.js"></script>
-<script src="js/main.js"></script>
-
-</body>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>FlipSquare</title>
+		
+		<style>
+		 @font-face {
+		     font-family: Raleway;
+			 src: url('FlipSquare/fonts/Raleway-Light.eot#') format('eot'),
+		        url('FlipSquare/fonts/Raleway-Light.woff') format('woff'),
+		        url('FlipSquare/fonts/Raleway-Light.ttf') format('truetype'),
+		        url('FlipSquare/fonts/Raleway-Light.svg#Raleway-Light') format('svg');
+		   }
+		</style>
+		
+		<script src="js/jquery-1.10.1.min.js"></script>
+		<script src="js/ocanvas-2.5.1.min.js"></script>
+		
+	</head>
+	<body>
+		<script src="js/game.js"></script>
+		<canvas id="canvas"></canvas>
+	
+		<span id="sounds"></span>
+	</body>
 </html>
