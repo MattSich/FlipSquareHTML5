@@ -31,7 +31,7 @@ $(document).ready(function(){
 		canvas.draw.redraw();
 	}
 	
-	
+	 
 	//SCENES
 	
 	var level_menu = canvas.scenes.create("level", function () {
@@ -570,7 +570,22 @@ $(document).ready(function(){
 		}
 		
 		var checkIfWon = function(){
+		
+			var checker = 0;
+		
+			for(x=1;x<number;x++){
+			  for(y=1;y<number;y++){  
+			  	if(blockArray[x][y][0].stype == 0){
+				  	checker++;
+			  	}
+			  }
+			}
 			
+			if(checker != 0){
+				restartLevel();
+			}else{
+				alert("You won!");
+			}
 		}
 		
 		// Set up a tick function that will move all satellites each frame
