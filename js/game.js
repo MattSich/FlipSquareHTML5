@@ -24,7 +24,9 @@ $(document).ready(function(){
 	
 	
 	var toScene = function(destinationScene){
+		
 		canvas.scenes.unload(localStorage.scene);
+		
   		localStorage.scene = destinationScene;
 		canvas.scenes.load(localStorage.scene);
 		
@@ -33,6 +35,8 @@ $(document).ready(function(){
 	
 	 
 	//SCENES
+	
+
 	
 	var level_menu = canvas.scenes.create("level", function () {
 	
@@ -90,7 +94,7 @@ $(document).ready(function(){
 			y: 0,
 			width: (smaller-100),
 			height: (smaller-100),
-			fill: "#ffffff"
+			fill: "transparent"
 		});
 		
 		this.add(box);
@@ -161,6 +165,7 @@ $(document).ready(function(){
 			
 			canvas.redraw();
 		}
+		
 		
 		var clearBoard = function(){
 
@@ -572,7 +577,7 @@ $(document).ready(function(){
 		var checkIfWon = function(){
 		
 			var checker = 0;
-		
+		/*
 			for(x=1;x<number;x++){
 			  for(y=1;y<number;y++){  
 			  	if(blockArray[x][y][0].stype == 0){
@@ -580,12 +585,11 @@ $(document).ready(function(){
 			  	}
 			  }
 			}
-			
 			if(checker != 0){
 				restartLevel();
 			}else{
 				alert("You won!");
-			}
+			}*/
 		}
 		
 		// Set up a tick function that will move all satellites each frame
@@ -628,6 +632,19 @@ $(document).ready(function(){
 		
 			canvas.draw.redraw();
 		});
+	});
+	
+	delete level_menu.loaded;
+	var loaded = false;
+	Object.defineProperty(level_menu, 'loaded', {
+	  get: function() {
+	    return loaded;
+	  },
+	  set: function(value) {
+	    loaded = value;
+	    if (loaded) sceneIsLoaded();
+	    else sceneIsUnloaded();
+	  }
 	});
 	
 	
@@ -820,6 +837,19 @@ $(document).ready(function(){
 	
 	});
 	
+	delete square_menu.loaded;
+	var loaded2 = false;
+	Object.defineProperty(square_menu, 'loaded', {
+	  get: function() {
+	    return loaded2;
+	  },
+	  set: function(value) {
+	    loaded2 = value;
+	    if (loaded2) sceneIsLoaded();
+	    else sceneIsUnloaded();
+	  }
+	});
+	
 	
 	//////////////////////////////
 	//////  MENU
@@ -958,7 +988,26 @@ $(document).ready(function(){
 		this.add(navArrows(this));
 	});
 	
+	delete menu_menu.loaded;
+	var loaded3 = false;
+	Object.defineProperty(menu_menu, 'loaded', {
+	  get: function() {
+	    return loaded3;
+	  },
+	  set: function(value) {
+	    loaded3 = value;
+	    if (loaded3) sceneIsLoaded();
+	    else sceneIsUnloaded();
+	  }
+	});
 	
+	var sceneIsLoaded = function(){
+		console.log("Scene was loaded");
+	}
+	
+	var sceneIsUnloaded = function(){
+		console.log("Scene was unloaded");
+	}
 	
 	///LOCAL STORAGE
 	
